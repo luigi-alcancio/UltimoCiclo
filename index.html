@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101310">
+  <meta name="description" content="Uma cruzadinha de Arquitetura Computacional. Dezesseis palavras, cinco vidas e uma última chance de escapar.">
+  <title>Último Ciclo — Cruzadinha de Arquitetura Computacional</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23101310'/%3E%3Ctext x='20' y='29' text-anchor='middle' font-size='28' fill='%23c4f66b'%3E✕%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="page">
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Último Ciclo, início">
+        <span class="brand-mark" aria-hidden="true">⌘</span>
+        <span>ÚLTIMO<span class="brand-light">CICLO</span><small>ARQUITETURA COMPUTACIONAL</small></span>
+      </a>
+      <div class="header-right">
+        <span class="connection"><i></i> SISTEMA ONLINE</span>
+        <button class="help-button" id="help-button" type="button"><span aria-hidden="true">?</span> Como jogar</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="game-title">
+        <div>
+          <p class="eyebrow"><span></span> PROTOCOLO DE SOBREVIVÊNCIA / V.01</p>
+          <h1 id="game-title">Decifre o sistema.<br><span>Salve a última vida.</span></h1>
+          <p class="intro-copy">Cada palavra é uma saída. Cada erro aperta a corda.<br>Seu conhecimento é a única coisa entre você e o fim.</p>
+        </div>
+        <div class="mission-code" aria-hidden="true">
+          <span>ACESSO RESTRITO</span>
+          <strong>16 / 05</strong>
+          <span>TERMOS &nbsp; / &nbsp; VIDAS</span>
+          <div class="barcode"></div>
+        </div>
+      </section>
+
+      <div class="game-layout">
+        <section class="panel board-panel" aria-labelledby="board-title">
+          <div class="panel-heading">
+            <h2 id="board-title"><span class="section-number">01</span> A cruzadinha</h2>
+            <span class="panel-caption">DIGITE PARA DECIFRAR</span>
+          </div>
+          <div class="board-area">
+            <div id="crossword" class="crossword" role="group" aria-label="Tabuleiro da cruzadinha: use as pistas e digite nas casas"></div>
+          </div>
+          <div class="active-clue" id="active-clue" aria-live="polite">
+            <span class="active-clue-icon" aria-hidden="true">↳</span>
+            <div><span id="active-clue-label" class="eyebrow">SELECIONE UMA PALAVRA</span><p id="active-clue-text">Clique em uma casa ou em uma pista para começar.</p></div>
+          </div>
+          <div class="board-legend"><span><i class="legend-dot selected"></i> Selecionada</span><span><i class="legend-dot correct"></i> Letra correta</span><span><i class="legend-dot incorrect"></i> Letra incorreta</span><span class="keyboard-tip">SETAS PARA NAVEGAR · ENTER PARA CONFERIR</span></div>
+        </section>
+
+        <aside class="panel survival-panel" aria-labelledby="survival-title">
+          <div class="panel-heading"><h2 id="survival-title"><span class="section-number">02</span> Sua sobrevivência</h2><span class="live-dot" aria-hidden="true"></span></div>
+          <div class="life-section">
+            <div class="stat-label"><span>INTEGRIDADE VITAL</span><span id="life-count">5 / 5</span></div>
+            <div id="lives" class="lives" role="img" aria-label="5 de 5 vidas restantes"></div>
+          </div>
+          <div class="execution-scene" id="execution-scene" role="img" aria-label="Forca vazia. Nenhuma vida perdida.">
+            <div class="scene-grid" aria-hidden="true"></div>
+            <span class="scene-label" aria-hidden="true">CAM_01 <i></i> REC</span>
+            <svg class="gallows" viewBox="0 0 280 250" aria-hidden="true">
+              <ellipse class="ground-shadow" cx="148" cy="224" rx="95" ry="8"/>
+              <g class="gallows-frame"><path d="M43 222H229 M70 221V30H176V62 M70 64L104 30"/><path class="rope" d="M176 62V80"/></g>
+              <g class="figure">
+                <g class="body-part" data-stage="1"><circle cx="176" cy="97" r="17"/><g class="dead-eyes"><path d="M168 92l5 5m0-5l-5 5m11-5l5 5m0-5l-5 5"/></g><g class="normal-eyes"><path d="M170 94v3m12-3v3"/></g></g>
+                <g class="body-part" data-stage="2"><path d="M176 114V164"/></g>
+                <g class="body-part" data-stage="3"><path d="M176 124L151 147 M176 124L201 147"/></g>
+                <g class="body-part" data-stage="4"><path d="M176 164L155 197"/></g>
+                <g class="body-part" data-stage="5"><path d="M176 164L197 197"/></g>
+              </g>
+              <g class="scene-details"><path d="M29 35V20H44 M235 20H250V35 M29 204V219H44 M235 219H250V204"/><path d="M25 231H255" stroke-dasharray="2 5"/></g>
+            </svg>
+            <span class="scene-bottom" id="scene-status">AGUARDANDO O PRIMEIRO MOVIMENTO</span>
+          </div>
+          <div class="progress-section">
+            <div class="stat-label"><span>PALAVRAS DECIFRADAS</span><strong id="score">0 <span>de 16</span></strong></div>
+            <div class="progress-track" role="progressbar" aria-label="Palavras corretas" aria-valuemin="0" aria-valuemax="16" aria-valuenow="0" id="progress"><span id="progress-fill"></span></div>
+          </div>
+          <div class="feedback" id="feedback" role="status" aria-live="polite">Preencha as casas. Confira quando estiver pronto.</div>
+          <div class="actions">
+            <button type="button" id="check-button" class="button-primary"><span aria-hidden="true">⌁</span> Conferir respostas <span aria-hidden="true">↗</span></button>
+            <button type="button" id="reset-button" class="button-secondary"><span aria-hidden="true">↻</span> Reiniciar jogo</button>
+          </div>
+          <p class="risk-note"><span aria-hidden="true">!</span> Letras erradas custam 1 vida por conferência.<br>Casas vazias não tiram vidas.</p>
+        </aside>
+      </div>
+
+      <section class="clues-section" aria-labelledby="clues-title">
+        <div class="clues-heading"><h2 id="clues-title"><span class="section-number">03</span> As pistas</h2><span class="panel-caption">CLIQUE EM UMA PISTA PARA SELECIONAR A PALAVRA</span></div>
+        <div class="clues-columns">
+          <section class="panel clue-panel"><h3><span aria-hidden="true">→</span> Horizontais <span id="horizontal-count"></span></h3><ol id="horizontal-clues" class="clue-list"></ol></section>
+          <section class="panel clue-panel"><h3><span aria-hidden="true">↓</span> Verticais <span id="vertical-count"></span></h3><ol id="vertical-clues" class="clue-list"></ol></section>
+        </div>
+      </section>
+    </main>
+    <footer><span>ÚLTIMO CICLO <span class="footer-divider">/</span> ARQUITETURA COMPUTACIONAL</span><span>O CONHECIMENTO MANTÉM VOCÊ VIVO. <i></i></span></footer>
+  </div>
+
+  <dialog id="help-dialog" aria-labelledby="help-title">
+    <div class="dialog-top"><span class="eyebrow">MANUAL DE SOBREVIVÊNCIA</span><button id="close-help" class="close-button" type="button" aria-label="Fechar instruções">×</button></div>
+    <h2 id="help-title">Conheça as regras.<br><span>Escape do último ciclo.</span></h2>
+    <ol class="instructions">
+      <li>Escolha uma pista e digite a resposta direto nas casas, sem acentos ou espaços.</li>
+      <li>Use as setas para navegar. Em um cruzamento, clique novamente na casa para trocar a direção.</li>
+      <li>Ao conferir, somente letras preenchidas são verificadas. Verde indica acerto; vermelho indica erro.</li>
+      <li>Uma conferência com erros custa <strong>uma vida</strong>, independentemente da quantidade de letras erradas. Casas vazias não penalizam.</li>
+      <li>Complete as 16 palavras para vencer. Após cinco conferências com erros, o jogo acaba. Reiniciar limpa o tabuleiro e devolve as cinco vidas.</li>
+    </ol>
+    <p class="help-note">Palavras incompletas não contam como acertos. Cada pista indica quantas letras a resposta tem.</p>
+    <button id="start-button" type="button" class="button-primary">Entendido. Vamos jogar. <span aria-hidden="true">→</span></button>
+  </dialog>
+</body>
+</html>
